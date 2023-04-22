@@ -1,0 +1,20 @@
+version: "3"
+services:
+  frontend:
+    image: node:alpine
+    working_dir: /frontend
+    volumes: 
+      - "./frontend:/frontend"
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && npm start"
+
+  backend:
+    image: node:alpine
+    working_dir: /backend
+    volumes:
+      - "./backend:/backend"
+    ports:
+      - "4000:4000"
+    command: sh -c "npm install && npm start"
+
