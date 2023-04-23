@@ -1,20 +1,17 @@
 version: "3"
 services:
   frontend:
-    image: node:alpine
-    working_dir: /frontend
-    volumes: 
-      - "./frontend:/frontend"
+    container_name: client-container
+    build: ./fronted
     ports:
       - "3000:3000"
-    command: sh -c "npm install && npm start"
+    depends_on:
+      - backend
 
   backend:
-    image: node:alpine
-    working_dir: /backend
-    volumes:
-      - "./backend:/backend"
+    container_name: server-container
+    build: ./backend
     ports:
       - "4000:4000"
-    command: sh -c "npm install && npm start"
+    
 
