@@ -1,7 +1,8 @@
 FROM node:alpine
-WORKDIR /frontend
-COPY package*.json ./
+WORKDIR /my-app
+COPY ./package.json .
+COPY ./package-lock.json .
 COPY . .
-EXPOSE 3000
+EXPOSE 5173
 RUN npm install
-CMD ["npm","start"]
+CMD ["npm","run","host"]
