@@ -3,11 +3,15 @@ services:
   frontend:
     image: node:alpine
     working_dir: /frontend
+    environment:
+      - API_URL=http://13.127.96.235:4000
     volumes: 
       - "./frontend:/frontend"
     ports:
       - "3000:3000"
     command: sh -c "npm install && npm start"
+    depends_on:
+      - backend
 
   backend:
     image: node:alpine
